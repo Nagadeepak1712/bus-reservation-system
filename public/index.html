@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransLink | Smart Bus Pass System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="container">
+        <nav>
+            <div class="logo">TRANSLINK</div>
+            <div id="nav-actions">
+                <!-- Dynamic Nav Buttons -->
+            </div>
+        </nav>
+
+        <!-- Auth Section -->
+        <main id="auth-view" class="fade-in">
+            <div class="glass" style="max-width: 400px; margin: 0 auto; padding: 40px;">
+                <h2 id="auth-title" style="margin-bottom: 24px; text-align: center;">Welcome Back</h2>
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="Enter username">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter password">
+                </div>
+                <div id="register-fields" style="display: none;">
+                    <div class="input-group">
+                        <label>Account Type</label>
+                        <select id="role">
+                            <option value="student">Student</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <button class="btn btn-primary" id="auth-btn">Login</button>
+                    <button class="btn" style="background: transparent; color: var(--text-muted); font-size: 0.9rem;" id="toggle-auth">
+                        Don't have an account? Register
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Student Dashboard -->
+        <main id="student-view" style="display: none;" class="fade-in">
+            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px;">
+                <!-- Apply Form -->
+                <div class="glass" style="padding: 30px;">
+                    <h3 style="margin-bottom: 20px;">Apply for New Pass</h3>
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="student_name" placeholder="John Doe">
+                    </div>
+                    <div class="input-group">
+                        <label>College ID</label>
+                        <input type="text" id="college_id" placeholder="ID-12345">
+                    </div>
+                    <div class="input-group">
+                        <label>Route</label>
+                        <select id="route">
+                            <option value="Mattuthavani - Periyar BS">Mattuthavani - Periyar BS</option>
+                            <option value="Anna Nagar - Meenakshi Amman">Anna Nagar - Meenakshi Amman</option>
+                            <option value="Goripalayam - K.Pudur">Goripalayam - K.Pudur</option>
+                            <option value="Thirunagar - Arapalayam">Thirunagar - Arapalayam</option>
+                            <option value="Tirupparankundram - Central">Tirupparankundram - Central</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Fee (Monthly Pass)</label>
+                        <input type="text" id="fee_display" value="₹450.00" disabled>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="submitApplication()">Submit Application</button>
+                </div>
+
+                <!-- Applications List -->
+                <div>
+                    <h3 style="margin-bottom: 20px;">My Applications</h3>
+                    <div id="my-apps" style="display: flex; flex-direction: column; gap: 15px;">
+                        <!-- Cards will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Admin Dashboard -->
+        <main id="admin-view" style="display: none;" class="fade-in">
+            <h2 style="margin-bottom: 30px;">Pending Approvals</h2>
+            <div id="admin-apps" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                <!-- Cards will be injected here -->
+            </div>
+        </main>
+
+        <!-- Pass Modal -->
+        <div id="pass-modal" class="glass" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 40px; z-index: 1000; min-width: 350px; text-align: center;">
+             <div id="pass-content">
+                <!-- Digital Pass Content -->
+             </div>
+             <button class="btn btn-primary" style="margin-top: 20px;" onclick="closePass()">Close</button>
+             <button class="btn" style="margin-top: 10px; background: #fff; color: #000;" onclick="window.print()">Print Pass</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
